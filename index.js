@@ -7,7 +7,7 @@ async function getText(blockId) {
     block_id: blockId,
   });
   const result = response.results;
-  // console.log(result);
+  console.log(result);
 
   for (let i=0; i<result.length; i++) {
     const content_type = result[i].type;
@@ -25,7 +25,7 @@ async function getData() {
   });
 
   const result = response.results
-  // console.log(result);
+  console.log(result);
 
   for (let i=0; i<result.length; i++) {
     console.log("calling getText(" + result[i].id + ")");
