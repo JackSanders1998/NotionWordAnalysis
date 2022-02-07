@@ -11,7 +11,10 @@ async function getText(blockId) {
 
   for (let i=0; i<result.length; i++) {
     const content_type = result[i].type;
+
     console.log(content_type);
+    console.log(result[i].paragraph);
+    console.log(result[i].bulleted_list_item);
   }
 }
 
@@ -32,5 +35,3 @@ async function getData() {
 
 
 getData()
-
-// 
