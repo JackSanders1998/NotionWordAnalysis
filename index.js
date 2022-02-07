@@ -2,19 +2,25 @@ import { Client } from "@notionhq/client"
 
 const notion = new Client({ auth: process.env.NOTION_KEY })
 
+function getDataFromText(text_block) {
+  console.log(text_block);
+}
+
 async function getText(blockId) {
   const response = await notion.blocks.children.list({
     block_id: blockId,
   });
   const result = response.results;
-  console.log(result);
+  var text_block = "";
 
   for (let i=0; i<result.length; i++) {
     const content_type = result[i].type;
-
-    console.log(content_type);
-    console.log(result[i].paragraph);
-    console.log(result[i].bulleted_list_item);
+    if (content_type === "paragraph") {
+      const text = result[i].paragraph.text
+      for (let j=0; j<text.length; j++) {
+        text_block += text[j].plain_text + ' ';
+      }
+    }
   }
 }
 
@@ -25,13 +31,9 @@ async function getData() {
   });
 
   const result = response.results
-  console.log(result);
 
   for (let i=0; i<result.length; i++) {
     console.log("calling getText(" + result[i].id + ")");
     getText(result[i].id);
   }
 }
-
-
-getData()

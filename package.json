@@ -5,6 +5,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "@notionhq/client": "^0.4.13"
+    "@notionhq/client": "^0.4.13",
+    "file-saver": "^2.0.5"
   }
 }
